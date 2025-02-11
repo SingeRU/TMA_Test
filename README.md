@@ -186,9 +186,6 @@ TELE_BOT_WEB_LINK="" # ngrok public url in dev mode, public url in production
 ```bash
 pnpm start:dev
 ```
-
-We are good to go...
-
 ---
 
 Open Telegram and get started. Congratulations!
