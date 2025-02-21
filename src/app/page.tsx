@@ -1,8 +1,9 @@
-import { Loyalty } from "@/components/loyalty/loyalty";
+import { Loyalty } from "@/components/loyalty/Loyalty";
 import { Me } from "@/components/me";
-import { CustomCarousel } from "@/components/shop/customCarousel/customCarousel";
-import { QrCode } from "@/components/shop/qrCode/qrCode";
+import { CustomCarousel } from "@/components/home/customCarousel/customCarousel";
+import { QrCode } from "@/components/home/qrCode/qrCode";
 import Link from "next/link";
+import { promos } from "@/mockData/mockData";
 
 export default function Home() {
 	return (
@@ -16,7 +17,7 @@ export default function Home() {
 			<section className="relative flex flex-col place-items-center">
 				<Loyalty />
 				<QrCode />
-				<CustomCarousel />
+				<CustomCarousel data={promos}></CustomCarousel>
 			</section>
 
 			<section className="flex items-center justify-between h-14 border-t w-full">
