@@ -3,7 +3,7 @@ import { Me } from "@/components/me";
 import { CustomCarousel } from "@/components/home/customCarousel/customCarousel";
 import { QrCode } from "@/components/home/qrCode/qrCode";
 import Link from "next/link";
-import { promos } from "@/mockData/mockData";
+import { promos } from "@/lib/mockData";
 
 export default function Home() {
 	return (
