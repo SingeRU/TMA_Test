@@ -3,7 +3,7 @@ import { BASE_URL } from "@/constants/constants";
 export async function getData(url: string) {
 	const username = process.env.BASIC_AUTH_USER;
 	const password = process.env.BASIC_AUTH_PASS;
-	console.log(process.env.BASIC_AUTH_USER);
+
 	const encodedCredentials = Buffer.from(`${username}:${password}`).toString(
 		"base64",
 	);
