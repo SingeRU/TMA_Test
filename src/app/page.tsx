@@ -1,39 +1,41 @@
-import { Loyalty } from "@/components/loyalty/Loyalty";
-import { Me } from "@/components/me";
-import { CustomCarousel } from "@/components/home/customCarousel/customCarousel";
-import { QrCode } from "@/components/home/qrCode/qrCode";
-import Link from "next/link";
-import { promos } from "@/lib/mockData";
+"use client";
 
+import { useEffect, useState } from "react";
+import { Card } from "@/components/ui/card";
+import { Coffee, User } from "lucide-react";
+import QRCode from "react-qr-code";
 export default function Home() {
+	const [user, setUser] = useState({
+		name: "John Doe",
+		points: 150,
+		qrCode: "user123",
+	});
+
 	return (
-		<main className="flex w-full min-h-screen flex-col items-center justify-between">
-			<section className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-				<p className="flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-					<Me />
-				</p>
-			</section>
+		<div className="container max-w-md mx-auto p-4 space-y-6">
+			<Card className="p-6 space-y-4">
+				<div className="flex items-center space-x-4">
+					<div className="h-16 w-16 rounded-full bg-primary flex items-center justify-center">
+						<User className="h-8 w-8 text-primary-foreground" />
+					</div>
+					<div>
+						<h2 className="text-2xl font-bold">{user.name}</h2>
+						<p className="text-muted-foreground">Loyalty Member</p>
+					</div>
+				</div>
 
-			<section className="relative flex flex-col place-items-center">
-				<Loyalty />
-				<QrCode />
-				<CustomCarousel data={promos}></CustomCarousel>
-			</section>
+				<div className="text-center p-4 bg-secondary rounded-lg">
+					<p className="text-lg text-muted-foreground">Loyalty Points</p>
+					<h3 className="text-3xl font-bold flex items-center justify-center gap-2">
+						<Coffee className="h-6 w-6" />
+						{user.points}
+					</h3>
+				</div>
 
-			<section className="flex items-center justify-between h-14 border-t w-full">
-				<Link
-					href={"/profile"}
-					className="w-1/2 p-4 h-full text-black border-r text-center transition-colors duration-300 hover:bg-zinc-300"
-				>
-					Профиль
-				</Link>
-				<Link
-					href={"/order"}
-					className="w-1/2 p-4 h-full text-black text-center transition-colors duration-300 hover:bg-zinc-300"
-				>
-					Онлайн заказ
-				</Link>
-			</section>
-		</main>
+				<div className="flex justify-center p-4 bg-white rounded-lg">
+					<QRCode value={user.qrCode} size={200} />
+				</div>
+			</Card>
+		</div>
 	);
 }
